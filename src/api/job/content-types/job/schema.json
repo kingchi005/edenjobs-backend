@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 1000,
+      "minLength": 30
+    },
+    "valid_through": {
+      "type": "date",
+      "required": true
+    },
+    "employment_type": {
+      "type": "enumeration",
+      "enum": [
+        "full-time",
+        "part-time",
+        "contract",
+        "internship"
+      ],
+      "required": true
+    },
+    "employer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::employer.employer",
+      "inversedBy": "jobs"
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "location_type": {
+      "type": "enumeration",
+      "enum": [
+        "on-site",
+        "remote"
+      ],
+      "required": true
+    },
+    "job_listing_page": {
+      "type": "string"
+    },
+    "educational_requirements": {
+      "type": "text",
+      "required": true
+    },
+    "years_of_experience": {
+      "type": "integer",
+      "required": true
+    },
+    "required_skills": {
+      "type": "text",
+      "required": true
+    },
+    "work_hours": {
+      "type": "enumeration",
+      "enum": [
+        "flexible-hours",
+        "night-shift",
+        "day-time"
+      ],
+      "required": true
+    },
+    "benefits": {
+      "type": "text",
+      "required": false
+    },
+    "application_closed": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "ended_at": {
+      "type": "date",
+      "required": true
+    },
+    "application_method": {
+      "type": "enumeration",
+      "enum": [
+        "online",
+        "email",
+        "others"
+      ],
+      "default": "online"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "jobs"
+    },
+    "salary": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

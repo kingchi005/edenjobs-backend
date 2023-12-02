@@ -1,0 +1,97 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applicants",
+  "info": {
+    "singularName": "applicant",
+    "pluralName": "applicants",
+    "displayName": "Applicant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "job_type": {
+      "type": "enumeration",
+      "enum": [
+        "part-time",
+        "full-time",
+        "contract"
+      ],
+      "required": true
+    },
+    "experience_level": {
+      "type": "enumeration",
+      "enum": [
+        "entry-level",
+        "mid-level",
+        "advance-level"
+      ],
+      "required": true
+    },
+    "company_size": {
+      "type": "enumeration",
+      "enum": [
+        "startup",
+        "small",
+        "medium",
+        "large",
+        "others"
+      ],
+      "required": true
+    },
+    "skill_set": {
+      "type": "text",
+      "required": true
+    },
+    "location": {
+      "type": "text",
+      "required": true
+    },
+    "work_schedule": {
+      "type": "enumeration",
+      "enum": [
+        "flexibly hours",
+        "night shift",
+        "day time"
+      ],
+      "required": true
+    },
+    "job_stability": {
+      "type": "enumeration",
+      "enum": [
+        "long term",
+        "short term"
+      ],
+      "required": true
+    },
+    "location_type": {
+      "type": "enumeration",
+      "enum": [
+        "remote",
+        "on-site"
+      ],
+      "required": true
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "applicant"
+    },
+    "user_details": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "applicant_profile"
+    },
+    "avatar": {
+      "type": "string"
+    },
+    "job_field": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
